@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ineskaburea — Prendre Rendez-vous</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-noir-or.css">
+  <link rel="stylesheet" href="style-agenda.css">
+  <!-- Calendly popup widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body>
+
+<header class="header scrolled" id="header">
+  <nav class="nav">
+    <a href="accueil.html" class="nav-logo">Ineskaburea</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="accueil.html#services" class="nav-link">Services</a></li>
+      <li><a href="produits.html" class="nav-link">Prestations</a></li>
+      <li><a href="accueil.html#formation" class="nav-link">Formation</a></li>
+      <li><a href="aide.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="searchBtn" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav-icon-btn cart-btn" id="cartBtn" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <form class="search-form" id="searchForm">
+      <input type="text" class="search-input" id="searchInput" placeholder="Rechercher une prestation…" autocomplete="off">
+      <button type="submit" class="search-submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    </form>
+    <div class="search-results" id="searchResults"></div>
+    <div class="search-suggestions">
+      <p class="search-suggestions-label">Suggestions</p>
+      <div class="search-tags">
+        <button class="search-tag" data-query="cils">Cils</button>
+        <button class="search-tag" data-query="ongles">Ongles</button>
+        <button class="search-tag" data-query="coiffure">Coiffure</button>
+        <button class="search-tag" data-query="formation">Formation</button>
+      </div>
+    </div>
+  </div>
+  <button class="search-close" id="searchClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+</div>
+
+<div class="agenda-page">
+  <div class="agenda-header">
+    <div class="agenda-header-inner">
+      <div>
+        <div class="agenda-breadcrumb">
+          <a href="accueil.html">Accueil</a><span>/</span>
+          <a href="produits.html">Prestations</a><span>/</span>
+          <span>Rendez-vous</span>
+        </div>
+        <h1 class="agenda-title">Prendre <em>rendez-vous</em></h1>
+        <p class="agenda-subtitle">Sélectionnez votre prestation, puis choisissez votre date et heure<br>directement via notre agenda synchronisé. <span class="badge-new">Calendly</span></p>
+      </div>
+      <div class="agenda-stepper">
+        <div class="astep active" id="step1"><span class="astep-num">1</span><span class="astep-label">Prestation</span></div>
+        <div class="astep-bar"></div>
+        <div class="astep" id="step2"><span class="astep-num">2</span><span class="astep-label">Créneau</span></div>
+        <div class="astep-bar"></div>
+        <div class="astep" id="step3"><span class="astep-num">3</span><span class="astep-label">Confirmé</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="agenda-progress"><div class="agenda-progress-fill" id="progressFill"></div></div>
+
+  <div class="agenda-layout">
+    <div>
+
+      <!-- ÉTAPE 1 -->
+      <div class="agenda-panel">
+        <div class="agenda-panel-header">
+          <div class="agenda-panel-num">1</div>
+          <h2 class="agenda-panel-title">Choisir une prestation</h2>
+        </div>
+        <div class="agenda-panel-body">
+          <div class="cat-chips" id="catChips">
+            <button class="cat-chip active" data-cat="all">Tous</button>
+            <button class="cat-chip" data-cat="cils">Cils</button>
+            <button class="cat-chip" data-cat="ongles">Ongles</button>
+            <button class="cat-chip" data-cat="coiffure">Coiffure</button>
+            <button class="cat-chip" data-cat="formation">Formation</button>
+          </div>
+          <div class="prestations-list" id="prestationsList"></div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 : Calendly popup -->
+      <div class="agenda-panel">
+        <div class="agenda-panel-header">
+          <div class="agenda-panel-num">2</div>
+          <h2 class="agenda-panel-title">Choisir votre créneau</h2>
+        </div>
+        <div class="agenda-panel-body">
+
+          <div class="calendly-popup-block" id="calendlyPlaceholder">
+            <div class="calendly-placeholder-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <p class="calendly-placeholder-title">Sélectionnez d'abord une prestation</p>
+            <p class="calendly-placeholder-text">Choisissez votre service à l'étape 1, puis cliquez sur le bouton pour ouvrir l'agenda et réserver votre créneau.</p>
+          </div>
+
+          <div class="calendly-popup-block" id="calendlyPopupBlock" style="display:none;">
+            <div class="calendly-placeholder-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <p class="calendly-placeholder-title" id="popupServiceName"></p>
+            <p class="calendly-placeholder-text">Cliquez sur le bouton ci-dessous pour ouvrir l'agenda et choisir votre date et heure.</p>
+            <button class="btn-calendly-popup" id="openCalendlyBtn" onclick="window._openCalendly()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Choisir mon créneau
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RÉCAP -->
+    <div class="recap-sidebar">
+      <div class="recap-card">
+        <div class="recap-card-header">
+          <div class="recap-card-title">Votre réservation</div>
+        </div>
+        <div class="recap-card-body">
+          <div class="recap-row">
+            <div class="recap-label">Prestation</div>
+            <div class="recap-val empty" id="recapService">Non sélectionnée</div>
+          </div>
+          <div class="recap-row">
+            <div class="recap-label">Durée estimée</div>
+            <div class="recap-val empty" id="recapDuree">—</div>
+          </div>
+          <div class="recap-row">
+            <div class="recap-label">Catégorie</div>
+            <div class="recap-val empty" id="recapCat">—</div>
+          </div>
+        </div>
+        <div class="recap-total-row">
+          <span class="recap-total-label">Prix</span>
+          <span class="recap-total-amount" id="recapTotal">—</span>
+        </div>
+        <p class="recap-note">Confirmation immédiate par e-mail · Rappel automatique · Annulation gratuite 24h avant</p>
+      </div>
+
+      <div class="infos-pratiques">
+        <div class="infos-label">Infos pratiques</div>
+        <div class="infos-row">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>112 Av. Paul Valéry<br>83160 La Valette-du-Var</span>
+        </div>
+        <div class="infos-row">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Lundi – Samedi · 9h00 – 19h00</span>
+        </div>
+        <div class="infos-row">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.86 19.86 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 8.91A16 16 0 0 0 14.09 14.91l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
+          <span>contact@ineskaburea.fr</span>
+        </div>
+        <div class="infos-row">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Annulation gratuite jusqu'à 24h avant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANIER -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-header">
+    <h3 class="cart-drawer-title">Mes Réservations</h3>
+    <button class="cart-close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="cart-items" id="cartItems"><p class="cart-empty">Aucune réservation en cours.</p></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">0 €</span></div>
+    <a href="agenda.html" class="btn btn-primary btn-full">Réserver →</a>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+<div class="toast-agenda" id="toastAgenda"></div>
+
+<script src="main.js"></script>
+<script>
+  (() => {
+    /* ─────────────────────────────────────────────────────────
+       LIENS CALENDLY PAR CATÉGORIE
+       Remplacez chaque URL par votre vrai lien Calendly.
+       Créez 4 types d'événements dans votre compte Calendly,
+       puis copiez leurs liens ici.
+    ───────────────────────────────────────────────────────── */
+    const CALENDLY_LINKS = {
+      cils:      'https://calendly.com/yassintest123/nouvelle-reunion-1',       // ← remplacer
+      ongles:    'https://calendly.com/yassintest123/ongles',     // ← remplacer
+      coiffure:  'https://calendly.com/yassintest123/coiffure',   // ← remplacer
+      formation: 'https://calendly.com/yassintest123/formation',  // ← remplacer
+    };
+
+    const PRESTATIONS = [
+      { id:1,  cat:'cils',      name:'Extensions Cils Volume Russe', duree:'~2h',     price:80  },
+      { id:2,  cat:'cils',      name:'Rehaussement de Cils',          duree:'~1h',     price:55  },
+      { id:3,  cat:'cils',      name:'Retouche Extensions Cils',      duree:'~1h',     price:40  },
+      { id:4,  cat:'ongles',    name:'Pose Ongles Gel Complet',       duree:'~1h30',   price:55  },
+      { id:5,  cat:'ongles',    name:'Semi-Permanent Simple',         duree:'~45 min', price:35  },
+      { id:6,  cat:'ongles',    name:'Nail Art Créatif',              duree:'~2h',     price:70  },
+      { id:7,  cat:'coiffure',  name:'Balayage & Coupe',              duree:'~3h',     price:120 },
+      { id:8,  cat:'coiffure',  name:'Coupe & Brushing',              duree:'~1h30',   price:45  },
+      { id:9,  cat:'coiffure',  name:'Soin Kératine Lissant',         duree:'~2h',     price:65  },
+      { id:10, cat:'formation', name:'Formation Coiffure Pro',         duree:'5 jours', price:490 },
+      { id:11, cat:'formation', name:'Module Colorimétrie',            duree:'2 jours', price:280 },
+      { id:12, cat:'formation', name:'Initiation Tresses & Chignons', duree:'1 jour',  price:150 },
+    ];
+
+    const CAT_LABELS = { cils:'Cils', ongles:'Ongles', coiffure:'Coiffure', formation:'Formation' };
+    let selectedService = null;
+    let currentCat = 'all';
+
+    /* Pré-sélection via URL ?service=N */
+    const preId = parseInt(new URLSearchParams(window.location.search).get('service'));
+    if (preId) selectedService = PRESTATIONS.find(p => p.id === preId) || null;
+
+    /* ── Rendu liste ── */
+    function renderList() {
+      const list     = document.getElementById('prestationsList');
+      const filtered = currentCat === 'all' ? PRESTATIONS : PRESTATIONS.filter(p => p.cat === currentCat);
+      list.innerHTML = filtered.map(p => `
+        <div class="prestation-item ${selectedService?.id === p.id ? 'selected' : ''}"
+             data-id="${p.id}" onclick="window._pick(${p.id})">
+          <div class="prestation-info">
+            <div class="prestation-name">${p.name}</div>
+            <div class="prestation-meta">${p.duree} · ${CAT_LABELS[p.cat]}</div>
+          </div>
+          <span class="prestation-price">${p.price} €</span>
+          <div class="prestation-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>`).join('');
+    }
+
+    /* ── Sélectionner ── */
+    window._pick = function(id) {
+      selectedService = PRESTATIONS.find(p => p.id === id);
+      renderList();
+      updateRecap();
+      updateStepper(false);
+      loadCalendly();
+      toast(`✦  "${selectedService.name}" — choisissez votre créneau ci-dessous`);
+    };
+
+    /* ── Chips ── */
+    document.getElementById('catChips').addEventListener('click', e => {
+      const chip = e.target.closest('.cat-chip');
+      if (!chip) return;
+      currentCat = chip.dataset.cat;
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      renderList();
+    });
+
+    /* ── Calendly popup ── */
+    function loadCalendly() {
+      if (!selectedService) return;
+      /* Masquer le placeholder "choisissez d'abord" */
+      const ph    = document.getElementById('calendlyPlaceholder');
+      const block = document.getElementById('calendlyPopupBlock');
+      const label = document.getElementById('popupServiceName');
+      ph.style.display    = 'none';
+      block.style.display = 'flex';
+      if (label) label.textContent = selectedService.name;
+    }
+
+    /* Écouter la confirmation Calendly — déclaré UNE seule fois globalement */
+    window.addEventListener('message', function(e) {
+      /* Calendly envoie soit e.data.event soit e.data.type selon les versions */
+      const evt = (e.data && (e.data.event || e.data.type)) || '';
+      if (evt === 'calendly.event_scheduled' || evt === 'calendly_event_scheduled') {
+        /* 1. Fermer la popup Calendly */
+        const overlay = document.querySelector('.calendly-overlay');
+        if (overlay) overlay.remove();
+        const popup = document.querySelector('.calendly-popup');
+        if (popup) popup.remove();
+
+        /* 2. Passer à l'étape 3 */
+        updateStepper(true);
+
+        /* 3. Toast de confirmation */
+        toast('✦  Rendez-vous confirmé ! Vérifiez votre e-mail.');
+
+        /* 4. Mettre à jour le bloc étape 2 */
+        const block = document.getElementById('calendlyPopupBlock');
+        if (block) {
+          block.innerHTML = `
+            <div class="calendly-placeholder-icon" style="border-color:var(--or);background:rgba(201,169,110,0.1);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="calendly-placeholder-title" style="color:var(--or);">Rendez-vous confirmé !</p>
+            <p class="calendly-placeholder-text">Vous allez recevoir un e-mail de confirmation avec tous les détails de votre rendez-vous.</p>
+          `;
+        }
+      }
+    });
+
+    /* Ouvrir la popup Calendly avec le bon lien selon la catégorie */
+    window._openCalendly = function() {
+      if (!selectedService) return;
+      const url = CALENDLY_LINKS[selectedService.cat];
+      function open() {
+        if (window.Calendly) {
+          window.Calendly.initPopupWidget({ url });
+        } else {
+          setTimeout(open, 400);
+        }
+      }
+      open();
+    };
+
+    /* ── Récap ── */
+    function updateRecap() {
+      const set = (id, val, empty) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = val;
+        el.classList.toggle('empty', empty);
+      };
+      if (selectedService) {
+        set('recapService', selectedService.name, false);
+        set('recapDuree',   selectedService.duree, false);
+        set('recapCat',     CAT_LABELS[selectedService.cat], false);
+        document.getElementById('recapTotal').textContent = selectedService.price + ' €';
+      } else {
+        set('recapService', 'Non sélectionnée', true);
+        set('recapDuree',   '—', true);
+        set('recapCat',     '—', true);
+        document.getElementById('recapTotal').textContent = '—';
+      }
+    }
+
+    /* ── Stepper ── */
+    function updateStepper(confirmed) {
+      const s1 = document.getElementById('step1');
+      const s2 = document.getElementById('step2');
+      const s3 = document.getElementById('step3');
+      const pf = document.getElementById('progressFill');
+      [s1,s2,s3].forEach(s => s.classList.remove('active','done'));
+      if (confirmed) {
+        s1.classList.add('done'); s2.classList.add('done'); s3.classList.add('active');
+        pf.style.width = '100%';
+      } else if (selectedService) {
+        s1.classList.add('done'); s2.classList.add('active');
+        pf.style.width = '50%';
+      } else {
+        s1.classList.add('active');
+        pf.style.width = '10%';
+      }
+    }
+
+    /* ── Toast local ── */
+    function toast(msg) {
+      const t = document.getElementById('toastAgenda');
+      if (!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    /* ── Init ── */
+    renderList();
+    updateRecap();
+    updateStepper(false);
+    if (selectedService) loadCalendly();
+
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ineskaburea — Contact LUMIÈRE — Aide, Retours & SAV Service Client</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link id="mainStylesheet" rel="stylesheet" href="style-noir-or.css">
+  <script></script>
+</head>
+<body>
+
+  <header class="header scrolled" id="header">
+    <nav class="nav">
+      <a href="accueil.html" class="nav-logo">Ineskaburea</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="accueil.html#services" class="nav-link">Services</a></li>
+        <li><a href="produits.html" class="nav-link">Produits</a></li>
+        <li><a href="accueil.html#formation" class="nav-link">Formation</a></li>
+        <li><a href="aide.html" class="nav-link" style="color:var(--or);">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="searchBtn" aria-label="Rechercher">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav-icon-btn cart-btn" aria-label="Panier" id="cartBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="nav-icon-btn" id="themeBtn" aria-label="Mode nuit" title="Basculer mode nuit">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-burger" id="navBurger"><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== HERO AIDE ========== -->
+  <div class="aide-hero">
+    <div class="page-breadcrumb" style="justify-content:center;margin-bottom:1.5rem;">
+      <a href="accueil.html">Accueil</a><span>/</span><span>Contact Aide & Service Client Service Client</span>
+    </div>
+    <h1 class="aide-hero-title">Nous sommes<br>là pour <em>vous répondre</em></h1>
+    <p class="aide-hero-desc">Notre équipe est disponible pour répondre à toutes vos questions sur nos prestations beauté et nos formations. Nous sommes à votre écoute.</p>
+    <form class="aide-search-bar" id="aideSearchForm">
+      <input type="text" class="aide-search-input" id="aideSearchInput" placeholder="Rechercher : cils, ongles, coiffure, formation…">
+      <button type="submit" class="aide-search-btn" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- ========== CATÉGORIES AIDE ========== -->
+  <div class="aide-categories">
+    <a href="#reservation" class="aide-cat-card">
+      <div class="aide-cat-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <p class="aide-cat-title">Réservation</p>
+      <p class="aide-cat-desc">Comment réserver votre prestation en ligne</p>
+    </a>
+    <a href="#formations" class="aide-cat-card">
+      <div class="aide-cat-icon">
+        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.7"/></svg>
+      </div>
+      <p class="aide-cat-title">Formations</p>
+      <p class="aide-cat-desc">Informations sur nos cursus et inscriptions</p>
+    </a>
+    <a href="#prestations" class="aide-cat-card">
+      <div class="aide-cat-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <p class="aide-cat-title">Nos Prestations</p>
+      <p class="aide-cat-desc">Détails sur nos services cils, ongles et coiffure</p>
+    </a>
+    <a href="#sav" class="aide-cat-card">
+      <div class="aide-cat-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <p class="aide-cat-title">Nous contacter</p>
+      <p class="aide-cat-desc">Formulaire de contact, téléphone et adresse</p>
+    </a>
+  </div>
+
+  <!-- ========== CONTENU AIDE ========== -->
+  <div class="aide-content">
+
+    <!-- LIVRAISON -->
+    <div class="aide-section" id="livraison">
+      <div class="aide-section-header">
+        <span class="aide-section-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+        <h2 class="aide-section-title">Livraison</h2>
+      </div>
+
+      <!-- Tableau modes de livraison -->
+      <div style="overflow-x:auto;margin-bottom:2.5rem;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--lin);">
+              <th style="text-align:left;padding:0.8rem 1rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;font-size:0.62rem;color:var(--terre);">Mode</th>
+              <th style="text-align:left;padding:0.8rem 1rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;font-size:0.62rem;color:var(--terre);">Délai</th>
+              <th style="text-align:left;padding:0.8rem 1rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;font-size:0.62rem;color:var(--terre);">Tarif</th>
+              <th style="text-align:left;padding:0.8rem 1rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;font-size:0.62rem;color:var(--terre);">Offerte dès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--lin);">
+              <td style="padding:1rem;font-family:var(--serif);">Livraison standard</td>
+              <td style="padding:1rem;color:var(--encre-leger);font-weight:300;">3–5 jours ouvrés</td>
+              <td style="padding:1rem;color:var(--terre);font-family:var(--serif);">5,90 €</td>
+              <td style="padding:1rem;color:var(--sauge-fonce);">80 €</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--lin);">
+              <td style="padding:1rem;font-family:var(--serif);">Livraison express</td>
+              <td style="padding:1rem;color:var(--encre-leger);font-weight:300;">1–2 jours ouvrés</td>
+              <td style="padding:1rem;color:var(--terre);font-family:var(--serif);">12,90 €</td>
+              <td style="padding:1rem;color:var(--encre-leger);">Non offerte</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--lin);">
+              <td style="padding:1rem;font-family:var(--serif);">Retrait en boutique</td>
+              <td style="padding:1rem;color:var(--encre-leger);font-weight:300;">Sous 24h</td>
+              <td style="padding:1rem;color:var(--sauge-fonce);font-family:var(--serif);">Gratuit</td>
+              <td style="padding:1rem;color:var(--sauge-fonce);">Toujours gratuit</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem;font-family:var(--serif);">International (Europe)</td>
+              <td style="padding:1rem;color:var(--encre-leger);font-weight:300;">5–10 jours ouvrés</td>
+              <td style="padding:1rem;color:var(--terre);font-family:var(--serif);">9,90 €</td>
+              <td style="padding:1rem;color:var(--sauge-fonce);">120 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="aide-faq-grid">
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Comment suivre ma commande ?</p>
+          <p class="aide-faq-a">Un e-mail de confirmation avec un numéro de suivi vous est envoyé dès l'expédition de votre colis. Vous pouvez suivre votre livraison directement sur le site du transporteur. Si vous n'avez pas reçu cet e-mail dans les 24h, vérifiez vos spams ou <a href="#sav">contactez notre SAV</a>.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Mon colis n'est pas arrivé, que faire ?</p>
+          <p class="aide-faq-a">Si votre colis n'est pas arrivé dans le délai indiqué, consultez d'abord le suivi en ligne. En cas d'anomalie ou de perte, contactez notre service client en précisant votre numéro de commande. Nous ouvrons une enquête dans les 48h.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Puis-je modifier mon adresse de livraison ?</p>
+          <p class="aide-faq-a">Les modifications d'adresse sont possibles uniquement avant l'expédition. Contactez-nous par e-mail dans les 2h suivant votre commande. Passé ce délai, la modification n'est plus garantie selon l'avancement de la préparation.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Livrez-vous dans les DOM-TOM et à l'international ?</p>
+          <p class="aide-faq-a">Nous livrons dans tous les pays de l'Union Européenne, en Suisse, au Canada et aux États-Unis. Pour les DOM-TOM, des délais supplémentaires peuvent s'appliquer. Contactez-nous pour les zones non listées.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETOURS -->
+    <div class="aide-section" id="retours">
+      <div class="aide-section-header">
+        <span class="aide-section-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.7"/></svg></span>
+        <h2 class="aide-section-title">Retours & Échanges</h2>
+      </div>
+
+      <!-- Étapes retour -->
+      <div style="margin-bottom:3rem;">
+        <p style="font-size:0.82rem;font-weight:300;line-height:1.9;color:var(--encre-leger);margin-bottom:2rem;">Vous avez <strong style="color:var(--encre);">30 jours</strong> à compter de la réception de votre colis pour retourner un produit non ouvert et dans son emballage d'origine. Les frais de retour sont <strong style="color:var(--sauge-fonce);">offerts</strong> pour la France métropolitaine.</p>
+        <div class="retour-steps">
+          <div class="retour-step">
+            <p class="retour-step-num">01</p>
+            <h4 class="retour-step-title">Contactez-nous</h4>
+            <p class="retour-step-desc">Signalez votre retour par e-mail en précisant votre numéro de commande et le motif.</p>
+          </div>
+          <div class="retour-step">
+            <p class="retour-step-num">02</p>
+            <h4 class="retour-step-title">Recevez l'étiquette</h4>
+            <p class="retour-step-desc">Nous vous envoyons sous 24h une étiquette de retour prépayée à imprimer.</p>
+          </div>
+          <div class="retour-step">
+            <p class="retour-step-num">03</p>
+            <h4 class="retour-step-title">Déposez le colis</h4>
+            <p class="retour-step-desc">Emballez soigneusement le produit et déposez le colis en point relais ou en bureau de poste.</p>
+          </div>
+          <div class="retour-step">
+            <p class="retour-step-num">04</p>
+            <h4 class="retour-step-title">Remboursement</h4>
+            <p class="retour-step-desc">Le remboursement est effectué dans les 5 jours ouvrés après réception et contrôle du colis.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aide-faq-grid">
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Puis-je retourner un produit ouvert ?</p>
+          <p class="aide-faq-a">Pour des raisons d'hygiène, les produits ouverts ne peuvent être repris sauf en cas de défaut avéré. Si le produit est défectueux ou ne correspond pas à la description, nous procéderons à un échange ou un remboursement complet.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Sous quel délai suis-je remboursé(e) ?</p>
+          <p class="aide-faq-a">Le remboursement est effectué sur le moyen de paiement utilisé lors de la commande dans un délai de 3 à 5 jours ouvrés après la réception et le contrôle de votre retour. Un e-mail de confirmation vous est envoyé.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">J'ai reçu un produit endommagé, que faire ?</p>
+          <p class="aide-faq-a">Nous nous excusons pour cet incident. Prenez des photos du produit et de l'emballage endommagé et <a href="#sav">contactez notre SAV</a> dans les 48h. Nous vous enverrons un remplacement sans frais ou procéderons à un remboursement intégral.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Puis-je échanger contre un autre produit ?</p>
+          <p class="aide-faq-a">Oui, les échanges sont possibles dans un délai de 30 jours. Retournez le produit dans son emballage d'origine et signalez dans votre demande de retour le produit souhaité en échange. Les différences de prix sont ajustées.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMANDES -->
+    <div class="aide-section" id="commandes">
+      <div class="aide-section-header">
+        <span class="aide-section-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+        <h2 class="aide-section-title">Mes Commandes</h2>
+      </div>
+      <div class="aide-faq-grid">
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Comment annuler une commande ?</p>
+          <p class="aide-faq-a">L'annulation est possible uniquement si la commande n'a pas encore été expédiée (dans les 2 heures suivant la commande). Contactez-nous immédiatement par e-mail ou téléphone avec votre numéro de commande.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Je n'ai pas reçu de confirmation de commande</p>
+          <p class="aide-faq-a">Vérifiez d'abord votre dossier de spams ou de promotions. Si l'e-mail n'est pas là, il est possible que l'adresse e-mail ait été saisie avec une erreur. Contactez-nous avec votre nom et la date de commande, nous retrouverons votre dossier.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Puis-je modifier les articles de ma commande ?</p>
+          <p class="aide-faq-a">Les modifications sont possibles dans les 2 heures suivant la commande. Passé ce délai, vous pouvez effectuer un retour ou passer une nouvelle commande. Contactez notre SAV le plus tôt possible.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Comment utiliser un code promo ?</p>
+          <p class="aide-faq-a">Le code promo s'applique sur la page de commande, dans le champ prévu à cet effet. Un seul code est utilisable par commande. Les codes promotionnels ne sont pas cumulables et ont une date de validité indiquée dans l'e-mail de promotion.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Mes informations de paiement sont-elles sécurisées ?</p>
+          <p class="aide-faq-a">Oui, toutes les transactions sont chiffrées via le protocole SSL. Nous ne stockons aucune donnée bancaire sur nos serveurs. Les paiements sont traités par des prestataires certifiés PCI-DSS. Votre sécurité est notre priorité absolue.</p>
+        </div>
+        <div class="aide-faq-item">
+          <p class="aide-faq-q">Puis-je recevoir une facture ?</p>
+          <p class="aide-faq-a">Votre facture est automatiquement jointe à l'e-mail de confirmation de commande au format PDF. Vous pouvez également nous contacter pour recevoir une facture avec TVA détaillée pour vos frais professionnels.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULAIRE SAV -->
+    <div class="aide-section" id="sav">
+      <div class="aide-section-header">
+        <span class="aide-section-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <h2 class="aide-section-title">Contacter notre Service Client</h2>
+      </div>
+
+      <div class="sav-layout">
+        <!-- Formulaire -->
+        <div class="sav-form-wrap">
+          <form id="savForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="savPrenom">Prénom *</label>
+                <input type="text" id="savPrenom" class="form-input" placeholder="Marie" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="savNom">Nom *</label>
+                <input type="text" id="savNom" class="form-input" placeholder="Dupont" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="savEmail">E-mail *</label>
+                <input type="email" id="savEmail" class="form-input" placeholder="marie@exemple.fr" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="savTel">Téléphone</label>
+                <input type="tel" id="savTel" class="form-input" placeholder="+33 6 12 34 56 78">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="savCommande">Numéro de commande</label>
+              <input type="text" id="savCommande" class="form-input" placeholder="#LUM-2025-XXXX">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="savSujet">Sujet de votre demande *</label>
+              <select id="savSujet" class="form-select" required>
+                <option value="">Sélectionner un sujet…</option>
+                <option value="livraison">Ma livraison / Suivi de colis</option>
+                <option value="retour">Retour & Remboursement</option>
+                <option value="produit">Question sur un produit</option>
+                <option value="commande">Modifier / Annuler ma commande</option>
+                <option value="defaut">Produit défectueux ou endommagé</option>
+                <option value="facture">Facture / Comptabilité</option>
+                <option value="autre">Autre demande</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="savMessage">Votre message *</label>
+              <textarea id="savMessage" class="form-textarea" placeholder="Décrivez votre demande en détail. Plus votre message est précis, plus nous pourrons vous aider rapidement…" style="min-height:140px;" required></textarea>
+            </div>
+
+            <!-- Pièces jointes -->
+            <div class="form-group">
+              <label class="form-label">Joindre une photo (optionnel)</label>
+              <div style="border:1px dashed var(--lin-fonce);padding:1.5rem;text-align:center;background:var(--blanc);cursor:pointer;" id="dropZone">
+                <svg style="width:24px;height:24px;margin:0 auto 0.5rem;stroke:var(--lin-fonce);fill:none;stroke-width:1.4;" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <p style="font-size:0.72rem;font-weight:300;color:var(--encre-leger);">Glissez votre image ici ou <span style="color:var(--sauge-fonce);border-bottom:1px solid rgba(78,117,96,0.3);">parcourez</span></p>
+                <p style="font-size:0.6rem;color:var(--lin-fonce);margin-top:0.3rem;">PNG, JPG — max 5 Mo</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="filtre-option" style="font-size:0.78rem;font-weight:300;align-items:flex-start;gap:0.8rem;">
+                <input type="checkbox" required style="accent-color:var(--sauge-fonce);margin-top:3px;flex-shrink:0;">
+                J'accepte que mes données soient utilisées pour traiter ma demande conformément à la <a href="#" style="color:var(--sauge-fonce);border-bottom:1px solid rgba(78,117,96,0.3);">politique de confidentialité</a>. *
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" style="font-size:0.75rem;padding:1.1rem;" id="savSubmitBtn">
+              Envoyer ma demande →
+            </button>
+
+            <!-- Message succès (caché par défaut) -->
+            <div id="savSuccess" style="display:none;margin-top:1.5rem;padding:1.5rem;background:rgba(143,174,154,0.1);border:1px solid rgba(78,117,96,0.25);text-align:center;">
+              <p style="font-family:var(--serif);font-size:1rem;color:var(--sauge-fonce);margin-bottom:0.5rem;">✓ Message envoyé avec succès</p>
+              <p style="font-size:0.78rem;font-weight:300;color:var(--encre-leger);">Nous vous répondrons dans un délai de 24 à 48 heures ouvrées.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Informations de contact -->
+        <div class="sav-contact-info">
+          <div class="sav-contact-card">
+            <p class="sav-contact-card-title">Nos coordonnées</p>
+            <div class="sav-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div class="sav-contact-text">
+                <strong>E-mail SAV</strong><br>
+                contact@ineskaburea.fr<br>
+                <span style="font-size:0.68rem;opacity:0.7;">Réponse sous 24–48h ouvrées</span>
+              </div>
+            </div>
+            <div class="sav-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/></svg>
+              <div class="sav-contact-text">
+                <strong>Téléphone</strong><br>
+                +33 (0)X XX XX XX XX<br>
+                <span style="font-size:0.68rem;opacity:0.7;">Appel non surtaxé</span>
+              </div>
+            </div>
+            <div class="sav-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div class="sav-contact-text">
+                <strong>Boutique Paris</strong><br>
+                112 Av. Paul Valéry<br>
+                83160 La Valette-du-Var
+              </div>
+            </div>
+            <div class="sav-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <div class="sav-contact-text">
+                <strong>Chat en ligne</strong><br>
+                Disponible sur le site<br>
+                <span style="font-size:0.68rem;opacity:0.7;">Lun–Ven · 9h–18h</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sav-horaires">
+            <p class="sav-horaires-title">Horaires du service client</p>
+            <div class="sav-horaires-line"><span>Lundi – Vendredi</span><span>9h00 – 18h00</span></div>
+            <div class="sav-horaires-line"><span>Samedi</span><span>10h00 – 16h00</span></div>
+            <div class="sav-horaires-line"><span>Dimanche</span><span>Fermé</span></div>
+            <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);">
+              <p style="font-size:0.65rem;font-weight:300;color:rgba(247,243,238,0.4);line-height:1.7;">Les demandes reçues hors horaires sont traitées le prochain jour ouvré. En période de soldes ou de Noël, des délais supplémentaires peuvent s'appliquer.</p>
+            </div>
+          </div>
+
+          <!-- Délai de réponse garanti -->
+          <div style="background:var(--creme);border:1px solid var(--lin);padding:1.5rem;margin-top:1.5rem;text-align:center;">
+            <p style="font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--sauge-fonce);line-height:1;">48h</p>
+            <p style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--encre-leger);margin-top:0.3rem;">délai de réponse garanti</p>
+            <p style="font-size:0.7rem;font-weight:300;color:var(--encre-leger);margin-top:0.6rem;opacity:0.7;">Nous nous engageons à répondre à toutes les demandes dans ce délai maximal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /aide-content -->
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-logo">Ineskaburea</p>
+          <p class="footer-tagline">Institut Beauté & Formation Coiffure<br>112 Av. Paul Valéry, 83160 La Valette-du-Var</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social">Ig</a><a href="#" class="footer-social">Fb</a><a href="#" class="footer-social">Pt</a><a href="#" class="footer-social">Yt</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="produits.html">Toutes les prestations</a></li>
+            <li><a href="produits.html">Extensions de cils</a></li>
+            <li><a href="produits.html">Pose d'ongles</a></li>
+            <li><a href="produits.html">Coiffure & Soins</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Institut</h4>
+          <ul class="footer-links">
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="accueil.html#valeurs">Valeurs</a></li>
+            <li><a href="#">Boutiques</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Aide</h4>
+          <ul class="footer-links">
+            <li><a href="aide.html#livraison">Livraison</a></li>
+            <li><a href="aide.html#retours">Retours</a></li>
+            <li><a href="aide.html#commandes">Commandes</a></li>
+            <li><a href="aide.html#sav">Contact SAV</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Ineskaburea. Tous droits réservés.</p>
+        <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">Cookies</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PANIER DRAWER -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header"><h3 class="cart-drawer-title">Mes Réservations</h3><button class="cart-close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="cart-items" id="cartItems"><p class="cart-empty">Aucune réservation en cours.</p></div>
+    <div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Total</span><span id="cartTotal">0 €</span></div><a href="commande.html" class="btn btn-primary btn-full">Confirmer la réservation →</a></div>
+  </aside>
+  <div class="toast" id="toast"></div>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <form class="search-form" id="searchForm">
+        <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un produit…" autocomplete="off">
+        <button type="submit" class="search-submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      </form>
+      <div class="search-results" id="searchResults"></div>
+      <div class="search-suggestions">
+        <p class="search-suggestions-label">Suggestions</p>
+        <div class="search-tags">
+          <button class="search-tag" data-query="sérum">Sérum</button>
+          <button class="search-tag" data-query="crème">Crème</button>
+          <button class="search-tag" data-query="huile">Huile</button>
+        </div>
+      </div>
+    </div>
+    <button class="search-close" id="searchClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+
+  <script>
+    // Formulaire SAV
+    const savForm = document.getElementById('savForm');
+    const savSuccess = document.getElementById('savSuccess');
+    const savBtn = document.getElementById('savSubmitBtn');
+
+    if (savForm) {
+      savForm.addEventListener('submit', e => {
+        e.preventDefault();
+        savBtn.textContent = 'Envoi en cours…';
+        savBtn.disabled = true;
+        setTimeout(() => {
+          savForm.style.display = 'none';
+          savSuccess.style.display = 'block';
+          if (window.showToast) window.showToast('Votre message a bien été envoyé !');
+        }, 1000);
+      });
+    }
+
+    // Lien ancre depuis l'URL
+    if (window.location.hash) {
+      setTimeout(() => {
+        const target = document.querySelector(window.location.hash);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+
+    // Recherche aide
+    const aideSearchForm = document.getElementById('aideSearchForm');
+    const aideSearchInput = document.getElementById('aideSearchInput');
+    if (aideSearchForm && aideSearchInput) {
+      aideSearchForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const q = aideSearchInput.value.trim().toLowerCase();
+        if (!q) return;
+        // Cibler la section la plus pertinente
+        let target = '#sav';
+        if (q.includes('livr') || q.includes('colis') || q.includes('delai')) target = '#livraison';
+        else if (q.includes('retour') || q.includes('rembours') || q.includes('echang')) target = '#retours';
+        else if (q.includes('command') || q.includes('annul') || q.includes('promo')) target = '#commandes';
+        const el = document.querySelector(target);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>

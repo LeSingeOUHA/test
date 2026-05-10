@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ineskaburea — Institut Beauté & Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link id="mainStylesheet" rel="stylesheet" href="style-noir-or.css">
+</head>
+<body>
+
+  <!-- ========== BARRE DE RECHERCHE ========== -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <form class="search-form" id="searchForm">
+        <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un service, une formation…" autocomplete="off">
+        <button type="submit" class="search-submit" aria-label="Rechercher">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+      <div class="search-results" id="searchResults"></div>
+      <div class="search-suggestions">
+        <p class="search-suggestions-label">Suggestions populaires</p>
+        <div class="search-tags">
+          <button class="search-tag" data-query="extensions cils">Extensions cils</button>
+          <button class="search-tag" data-query="ongle">Ongles</button>
+          <button class="search-tag" data-query="coiffure">Coiffure</button>
+          <button class="search-tag" data-query="formation">Formation</button>
+          <button class="search-tag" data-query="balayage">Balayage</button>
+          <button class="search-tag" data-query="lissage">Lissage</button>
+        </div>
+      </div>
+    </div>
+    <button class="search-close" id="searchClose" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="accueil.html" class="nav-logo">Ineskaburea</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="produits.html" class="nav-link">Prestations</a></li>
+        <li><a href="#formation" class="nav-link">Formation</a></li>
+        <li><a href="aide.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="searchBtn" aria-label="Rechercher">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Compte">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="nav-icon-btn cart-btn" aria-label="Panier" id="cartBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="nav-icon-btn" id="themeBtn" aria-label="Mode nuit" title="Basculer mode nuit">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow reveal" data-delay="0">— Institut Beauté · La Valette-du-Var</span>
+      <h1 class="hero-title reveal" data-delay="100">L'art de<br>sublimer<br><em>votre beauté</em></h1>
+      <p class="hero-desc reveal" data-delay="200">Extensions de cils, pose d'ongles, coiffure d'exception et formations professionnelles. Ineskaburea vous accompagne vers le meilleur de vous-même.</p>
+      <div class="hero-actions reveal" data-delay="300">
+        <a href="#services" class="btn btn-primary">Découvrir nos services</a>
+        <a href="#formation" class="btn btn-ghost">Nos formations</a>
+      </div>
+      <div class="hero-scroll reveal" data-delay="500">
+        <span class="hero-scroll-line"></span>
+        <span class="hero-scroll-label">Défiler</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal" data-delay="150">
+      <div class="hero-circle-1"></div>
+      <div class="hero-circle-2"></div>
+      <div class="hero-plant-bg"></div>
+      <div class="hero-bottle">
+        <!-- Illustration miroir / beauté stylisée -->
+        <svg viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="mirGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2A2A2A"/>
+              <stop offset="50%" stop-color="#1A1A1A"/>
+              <stop offset="100%" stop-color="#0D0D0D"/>
+            </linearGradient>
+            <linearGradient id="goldFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E8C97A"/>
+              <stop offset="40%" stop-color="#C9A96E"/>
+              <stop offset="100%" stop-color="#8B6A3E"/>
+            </linearGradient>
+            <radialGradient id="mirRefl" cx="40%" cy="35%">
+              <stop offset="0%" stop-color="rgba(201,169,110,0.18)"/>
+              <stop offset="100%" stop-color="rgba(201,169,110,0.02)"/>
+            </radialGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <!-- Ombre portée -->
+          <ellipse cx="150" cy="455" rx="85" ry="10" fill="rgba(201,169,110,0.08)"/>
+          <!-- Manche du miroir -->
+          <rect x="138" y="340" width="24" height="110" rx="12" fill="url(#goldFrame)"/>
+          <!-- Cadre ovale doré -->
+          <ellipse cx="150" cy="210" rx="96" ry="122" fill="url(#goldFrame)"/>
+          <!-- Surface miroir -->
+          <ellipse cx="150" cy="210" rx="84" ry="110" fill="url(#mirGrad)"/>
+          <!-- Reflet -->
+          <ellipse cx="150" cy="210" rx="84" ry="110" fill="url(#mirRefl)"/>
+          <!-- Détails cadre -->
+          <ellipse cx="150" cy="210" rx="90" ry="116" fill="none" stroke="rgba(232,201,122,0.3)" stroke-width="1"/>
+          <!-- Étoiles décoratives -->
+          <circle cx="80" cy="120" r="2.5" fill="#C9A96E" opacity="0.7" filter="url(#glow)"/>
+          <circle cx="220" cy="145" r="2" fill="#C9A96E" opacity="0.6" filter="url(#glow)"/>
+          <circle cx="72" cy="290" r="1.8" fill="#C9A96E" opacity="0.5"/>
+          <circle cx="228" cy="310" r="2.2" fill="#C9A96E" opacity="0.55"/>
+          <!-- Texte dans le miroir -->
+          <text x="150" y="195" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="14" fill="rgba(201,169,110,0.9)" letter-spacing="4">INESKABUREA</text>
+          <line x1="110" y1="205" x2="190" y2="205" stroke="#C9A96E" stroke-width="0.6" opacity="0.5"/>
+          <text x="150" y="222" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="7" fill="rgba(201,169,110,0.6)" letter-spacing="2.5">INSTITUT BEAUTÉ</text>
+          <!-- Petits ornements -->
+          <circle cx="150" cy="88" r="5" fill="url(#goldFrame)" opacity="0.8"/>
+          <circle cx="150" cy="88" r="2.5" fill="#E8C97A" opacity="0.9"/>
+          <circle cx="54" cy="210" r="4" fill="url(#goldFrame)" opacity="0.7"/>
+          <circle cx="246" cy="210" r="4" fill="url(#goldFrame)" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-num">100%</span>
+        <span class="hero-badge-text">savoir-faire<br>certifié</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TICKER ========== -->
+  <div class="ticker-wrap">
+    <div class="ticker" id="ticker">
+      <span>Institut beauté à La Valette-du-Var</span><span class="ticker-dot">✦</span>
+      <span>Extensions de cils d'exception</span><span class="ticker-dot">✦</span>
+      <span>Pose d'ongles & Nail Art</span><span class="ticker-dot">✦</span>
+      <span>Coiffure & Soins capillaires</span><span class="ticker-dot">✦</span>
+      <span>Formations professionnelles certifiées</span><span class="ticker-dot">✦</span>
+      <span>Institut beauté à La Valette-du-Var</span><span class="ticker-dot">✦</span>
+      <span>Extensions de cils d'exception</span><span class="ticker-dot">✦</span>
+      <span>Pose d'ongles & Nail Art</span><span class="ticker-dot">✦</span>
+      <span>Coiffure & Soins capillaires</span><span class="ticker-dot">✦</span>
+      <span>Formations professionnelles certifiées</span><span class="ticker-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="section collections" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Nos Services</span>
+        <h2 class="section-title">Des prestations pensées<br>pour <em>chaque femme</em></h2>
+      </div>
+      <div class="collections-grid">
+
+        <!-- CILS -->
+        <article class="col-card reveal" data-delay="0">
+          <div class="col-card-img">
+            <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs><linearGradient id="c1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1A1A1A"/><stop offset="100%" stop-color="#0D0D0D"/></linearGradient></defs>
+              <rect width="320" height="400" fill="url(#c1)"/>
+              <!-- Œil stylisé -->
+              <ellipse cx="160" cy="200" rx="110" ry="55" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.6"/>
+              <ellipse cx="160" cy="200" rx="80" ry="38" fill="#111"/>
+              <circle cx="160" cy="200" r="32" fill="#1A1A1A" stroke="#C9A96E" stroke-width="1" opacity="0.8"/>
+              <circle cx="160" cy="200" r="20" fill="#080808"/>
+              <circle cx="170" cy="192" r="5" fill="rgba(201,169,110,0.4)"/>
+              <!-- Cils stylisés -->
+              <line x1="90" y1="172" x2="82" y2="152" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="108" y1="162" x2="104" y2="140" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="128" y1="156" x2="126" y2="133" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="148" y1="153" x2="148" y2="130" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="168" y1="154" x2="170" y2="131" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="187" y1="158" x2="191" y2="136" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="205" y1="166" x2="212" y2="146" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="221" y1="178" x2="230" y2="160" stroke="#C9A96E" stroke-width="1.8" stroke-linecap="round"/>
+              <text x="160" y="320" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="rgba(201,169,110,0.5)" letter-spacing="4">EXTENSIONS CILS</text>
+            </svg>
+            <div class="col-card-overlay"><a href="produits.html" class="btn btn-cream">Voir les prestations</a></div>
+          </div>
+          <div class="col-card-body">
+            <span class="col-card-tag">Cils</span>
+            <h3 class="col-card-title">Extensions & Rehaussement de cils</h3>
+            <p class="col-card-desc">Extensions volume russe, naturel ou dramatique. Rehaussement et teinture pour un regard envoûtant qui dure.</p>
+            <div class="col-card-footer">
+              <span class="col-card-price">À partir de 60 €</span>
+              <a href="produits.html" class="col-card-link">Réserver →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ONGLES -->
+        <article class="col-card reveal" data-delay="120">
+          <div class="col-card-img col-card-img--tall">
+            <svg viewBox="0 0 320 520" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs><linearGradient id="c2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1C1C1C"/><stop offset="100%" stop-color="#0A0A0A"/></linearGradient></defs>
+              <rect width="320" height="520" fill="url(#c2)"/>
+              <!-- Mains stylisées avec ongles -->
+              <g transform="translate(160,260)">
+                <!-- Doigts -->
+                <rect x="-70" y="-80" width="22" height="90" rx="11" fill="#2A2A2A" stroke="#C9A96E" stroke-width="0.5" opacity="0.6"/>
+                <rect x="-38" y="-100" width="22" height="110" rx="11" fill="#2A2A2A" stroke="#C9A96E" stroke-width="0.5" opacity="0.6"/>
+                <rect x="-6" y="-105" width="22" height="115" rx="11" fill="#2A2A2A" stroke="#C9A96E" stroke-width="0.5" opacity="0.6"/>
+                <rect x="26" y="-95" width="22" height="105" rx="11" fill="#2A2A2A" stroke="#C9A96E" stroke-width="0.5" opacity="0.6"/>
+                <rect x="56" y="-75" width="20" height="82" rx="10" fill="#2A2A2A" stroke="#C9A96E" stroke-width="0.5" opacity="0.6"/>
+                <!-- Ongles dorés -->
+                <rect x="-70" y="-80" width="22" height="26" rx="11" fill="url(#goldFrame2)"/>
+                <rect x="-38" y="-100" width="22" height="30" rx="11" fill="url(#goldFrame2)"/>
+                <rect x="-6" y="-105" width="22" height="32" rx="11" fill="url(#goldFrame2)"/>
+                <rect x="26" y="-95" width="22" height="28" rx="11" fill="url(#goldFrame2)"/>
+                <rect x="56" y="-75" width="20" height="24" rx="10" fill="url(#goldFrame2)"/>
+                <defs>
+                  <linearGradient id="goldFrame2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#E8C97A"/>
+                    <stop offset="100%" stop-color="#8B6A3E"/>
+                  </linearGradient>
+                </defs>
+                <!-- Brillance ongles -->
+                <ellipse cx="-62" cy="-70" rx="5" ry="3" fill="rgba(255,255,255,0.25)"/>
+                <ellipse cx="-30" cy="-88" rx="5" ry="3" fill="rgba(255,255,255,0.25)"/>
+                <ellipse cx="2" cy="-93" rx="5" ry="3" fill="rgba(255,255,255,0.25)"/>
+                <ellipse cx="34" cy="-83" rx="5" ry="3" fill="rgba(255,255,255,0.25)"/>
+                <ellipse cx="63" cy="-65" rx="4" ry="2.5" fill="rgba(255,255,255,0.25)"/>
+                <!-- Paume -->
+                <rect x="-72" y="10" width="148" height="60" rx="18" fill="#252525"/>
+              </g>
+              <text x="160" y="430" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="rgba(201,169,110,0.5)" letter-spacing="4">NAIL ART & POSE</text>
+            </svg>
+            <div class="col-card-overlay"><a href="produits.html" class="btn btn-cream">Voir les prestations</a></div>
+          </div>
+          <div class="col-card-body">
+            <span class="col-card-tag">Ongles</span>
+            <h3 class="col-card-title">Pose & Nail Art d'Exception</h3>
+            <p class="col-card-desc">Pose gel, capsules, semi-permanent et nail art créatif. Des mains sublimées qui reflètent votre personnalité.</p>
+            <div class="col-card-footer">
+              <span class="col-card-price">À partir de 35 €</span>
+              <a href="produits.html" class="col-card-link">Réserver →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CHEVEUX -->
+        <article class="col-card reveal" data-delay="240">
+          <div class="col-card-img">
+            <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs><linearGradient id="c3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1A1A1A"/><stop offset="100%" stop-color="#080808"/></linearGradient></defs>
+              <rect width="320" height="400" fill="url(#c3)"/>
+              <!-- Silhouette chevelure -->
+              <path d="M160,50 C100,50 60,90 55,140 C50,190 65,230 80,265 C95,300 100,330 100,350 L220,350 C220,330 225,300 240,265 C255,230 270,190 265,140 C260,90 220,50 160,50Z" fill="#1E1E1E" stroke="#C9A96E" stroke-width="0.8" opacity="0.7"/>
+              <!-- Mèches dorées -->
+              <path d="M120,80 C115,120 112,180 115,250" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+              <path d="M140,65 C138,110 136,175 138,260" fill="none" stroke="#E8C97A" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+              <path d="M160,60 C160,105 160,175 160,265" fill="none" stroke="#C9A96E" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
+              <path d="M180,65 C182,110 183,175 182,260" fill="none" stroke="#E8C97A" stroke-width="1.6" opacity="0.5" stroke-linecap="round"/>
+              <path d="M200,80 C205,120 207,182 205,252" fill="none" stroke="#C9A96E" stroke-width="1.4" opacity="0.5" stroke-linecap="round"/>
+              <!-- Ciseau stylisé -->
+              <g transform="translate(228,130) rotate(-30)">
+                <line x1="0" y1="0" x2="0" y2="40" stroke="#C9A96E" stroke-width="1.5" opacity="0.7"/>
+                <line x1="6" y1="0" x2="6" y2="40" stroke="#C9A96E" stroke-width="1.5" opacity="0.7"/>
+                <ellipse cx="3" cy="-6" rx="5" ry="7" fill="none" stroke="#C9A96E" stroke-width="1.2" opacity="0.6"/>
+                <ellipse cx="3" cy="-20" rx="5" ry="7" fill="none" stroke="#C9A96E" stroke-width="1.2" opacity="0.6"/>
+              </g>
+              <text x="160" y="375" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="rgba(201,169,110,0.5)" letter-spacing="4">COIFFURE & SOINS</text>
+            </svg>
+            <div class="col-card-overlay"><a href="produits.html" class="btn btn-cream">Voir les prestations</a></div>
+          </div>
+          <div class="col-card-body">
+            <span class="col-card-tag">Cheveux</span>
+            <h3 class="col-card-title">Coiffure & Soins Capillaires</h3>
+            <p class="col-card-desc">Coupes, colorations, balayages, lissages et soins kératine. Une expertise capillaire au service de votre style.</p>
+            <div class="col-card-footer">
+              <span class="col-card-price">À partir de 45 €</span>
+              <a href="produits.html" class="col-card-link">Réserver →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORMATION ========== -->
+  <section class="section valeurs" id="formation">
+    <div class="valeurs-inner">
+      <div class="valeurs-text reveal">
+        <span class="section-eyebrow">Formation Professionnelle</span>
+        <h2 class="section-title">Devenez experte<br>en <em>coiffure &<br>beauté</em></h2>
+        <p class="valeurs-desc">Chez Ineskaburea, nous transmettons notre passion et notre savoir-faire à travers des formations professionnelles en coiffure. Que vous soyez débutante ou professionnelle souhaitant se perfectionner, nos cursus s'adaptent à votre niveau et à vos ambitions.</p>
+        <div class="valeurs-list">
+          <div class="valeur-item reveal" data-delay="100">
+            <span class="valeur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <div><h4 class="valeur-title">Formations certifiées</h4><p class="valeur-text">Des cursus reconnus par les professionnels du secteur beauté.</p></div>
+          </div>
+          <div class="valeur-item reveal" data-delay="200">
+            <span class="valeur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <div><h4 class="valeur-title">Formations sur mesure</h4><p class="valeur-text">Modules adaptés à votre rythme, en présentiel à La Valette-du-Var.</p></div>
+          </div>
+          <div class="valeur-item reveal" data-delay="300">
+            <span class="valeur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+            <div><h4 class="valeur-title">Débouchés garantis</h4><p class="valeur-text">Réseau professionnel, accompagnement à l'insertion et suivi post-formation.</p></div>
+          </div>
+        </div>
+        <div style="margin-top:2.5rem;">
+          <a href="produits.html" class="btn btn-primary">Voir les formations →</a>
+        </div>
+      </div>
+      <div class="valeurs-visual reveal" data-delay="200">
+        <div class="valeurs-card-wrap">
+          <div class="valeurs-card">
+            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" width="100%">
+              <defs>
+                <radialGradient id="vg" cx="50%" cy="40%">
+                  <stop offset="0%" stop-color="#1E1E1E"/>
+                  <stop offset="100%" stop-color="#080808"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="500" fill="url(#vg)"/>
+              <!-- Cercles décoratifs -->
+              <circle cx="200" cy="240" r="160" fill="none" stroke="rgba(201,169,110,0.08)" stroke-width="1"/>
+              <circle cx="200" cy="240" r="120" fill="none" stroke="rgba(201,169,110,0.06)" stroke-width="0.8"/>
+              <!-- Peigne stylisé -->
+              <rect x="120" y="140" width="160" height="18" rx="6" fill="rgba(201,169,110,0.7)"/>
+              <rect x="128" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="144" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="160" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="176" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="192" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="208" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="224" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="240" y="158" width="8" height="60" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <rect x="256" y="158" width="8" height="45" rx="2" fill="rgba(201,169,110,0.5)"/>
+              <!-- Texte central -->
+              <text x="200" y="295" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" fill="#C9A96E" letter-spacing="5">INESKABUREA</text>
+              <line x1="130" y1="308" x2="270" y2="308" stroke="#C9A96E" stroke-width="0.6" opacity="0.4"/>
+              <text x="200" y="326" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8" fill="rgba(201,169,110,0.55)" letter-spacing="3">ÉCOLE DE COIFFURE</text>
+              <!-- Étoiles dorées -->
+              <circle cx="100" cy="200" r="3" fill="#C9A96E" opacity="0.5"/>
+              <circle cx="300" cy="280" r="2.5" fill="#C9A96E" opacity="0.45"/>
+              <circle cx="90" cy="320" r="2" fill="#C9A96E" opacity="0.35"/>
+              <circle cx="310" cy="180" r="2.2" fill="#C9A96E" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="valeurs-floating-tag">
+            <span class="vft-label">Certifiée</span>
+            <span class="vft-value">Formation Pro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRESTATIONS VEDETTES ========== -->
+  <section class="section produits" id="boutique">
+    <div class="container">
+      <div class="section-head section-head--split reveal">
+        <div>
+          <span class="section-eyebrow">Nos Best-sellers</span>
+          <h2 class="section-title">Les <em>prestations</em><br>les plus demandées</h2>
+        </div>
+        <a href="produits.html" class="btn btn-outline">Voir tout →</a>
+      </div>
+      <div class="produits-grid produits-grid--compact" id="produitsGrid">
+
+        <!-- Extension cils -->
+        <div class="produit-card reveal" data-delay="0" data-product='{"id":1,"name":"Extensions Cils Volume Russe","sub":"Pose complète · Duree 2h","price":80}' onclick="if(!event.target.closest('.produit-add-btn'))location.href='produit-serum.html';" style="cursor:pointer;">
+          <div class="produit-img">
+            <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" width="100%">
+              <rect width="260" height="300" fill="#111"/>
+              <!-- Œil centré -->
+              <ellipse cx="130" cy="150" rx="90" ry="44" fill="none" stroke="#C9A96E" stroke-width="1.2" opacity="0.5"/>
+              <ellipse cx="130" cy="150" rx="66" ry="30" fill="#0D0D0D"/>
+              <circle cx="130" cy="150" r="24" fill="#1A1A1A" stroke="#C9A96E" stroke-width="0.8" opacity="0.7"/>
+              <circle cx="130" cy="150" r="14" fill="#080808"/>
+              <circle cx="138" cy="144" r="4" fill="rgba(201,169,110,0.35)"/>
+              <!-- Cils longs -->
+              <line x1="68" y1="129" x2="58" y2="104" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="84" y1="120" x2="78" y2="94" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="102" y1="114" x2="100" y2="87" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="120" y1="111" x2="120" y2="84" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="138" y1="112" x2="140" y2="85" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="156" y1="116" x2="160" y2="90" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="172" y1="124" x2="179" y2="99" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="186" y1="136" x2="196" y2="114" stroke="#C9A96E" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="produit-badge">Bestseller</span>
+          </div>
+          <div class="produit-info">
+            <h3 class="produit-name">Extensions Cils Volume Russe</h3>
+            <p class="produit-sub">Pose complète · 2h environ</p>
+            <div class="produit-footer">
+              <span class="produit-price">80 €</span>
+              <div class="produit-stars"><span>★★★★★</span><span class="produit-reviews">(84)</span></div>
+            </div>
+            <button class="produit-add-btn">+ Réserver</button>
+          </div>
+        </div>
+
+        <!-- Pose ongles gel -->
+        <div class="produit-card reveal" data-delay="100" data-product='{"id":2,"name":"Pose Ongles Gel Complet","sub":"Pose + vernis semi-permanent","price":55}' onclick="if(!event.target.closest('.produit-add-btn'))location.href='produit-creme.html';" style="cursor:pointer;">
+          <div class="produit-img">
+            <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" width="100%">
+              <rect width="260" height="300" fill="#111"/>
+              <g transform="translate(130,155)">
+                <rect x="-60" y="-50" width="18" height="70" rx="9" fill="#1E1E1E" stroke="#C9A96E" stroke-width="0.4" opacity="0.6"/>
+                <rect x="-32" y="-64" width="18" height="84" rx="9" fill="#1E1E1E" stroke="#C9A96E" stroke-width="0.4" opacity="0.6"/>
+                <rect x="-4" y="-68" width="18" height="88" rx="9" fill="#1E1E1E" stroke="#C9A96E" stroke-width="0.4" opacity="0.6"/>
+                <rect x="24" y="-60" width="18" height="80" rx="9" fill="#1E1E1E" stroke="#C9A96E" stroke-width="0.4" opacity="0.6"/>
+                <rect x="50" y="-44" width="16" height="62" rx="8" fill="#1E1E1E" stroke="#C9A96E" stroke-width="0.4" opacity="0.6"/>
+                <defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E8C97A"/><stop offset="100%" stop-color="#8B6A3E"/></linearGradient></defs>
+                <rect x="-60" y="-50" width="18" height="22" rx="9" fill="url(#ng)"/>
+                <rect x="-32" y="-64" width="18" height="26" rx="9" fill="url(#ng)"/>
+                <rect x="-4" y="-68" width="18" height="28" rx="9" fill="url(#ng)"/>
+                <rect x="24" y="-60" width="18" height="24" rx="9" fill="url(#ng)"/>
+                <rect x="50" y="-44" width="16" height="20" rx="8" fill="url(#ng)"/>
+                <ellipse cx="-53" cy="-40" rx="5" ry="3" fill="rgba(255,255,255,0.2)"/>
+                <ellipse cx="-25" cy="-53" rx="5" ry="3" fill="rgba(255,255,255,0.2)"/>
+                <ellipse cx="3" cy="-57" rx="5" ry="3" fill="rgba(255,255,255,0.2)"/>
+                <ellipse cx="31" cy="-50" rx="5" ry="3" fill="rgba(255,255,255,0.2)"/>
+                <ellipse cx="56" cy="-36" rx="4" ry="2.5" fill="rgba(255,255,255,0.2)"/>
+                <rect x="-62" y="20" width="128" height="46" rx="14" fill="#1A1A1A"/>
+              </g>
+            </svg>
+          </div>
+          <div class="produit-info">
+            <h3 class="produit-name">Pose Ongles Gel Complet</h3>
+            <p class="produit-sub">Pose + vernis semi-permanent</p>
+            <div class="produit-footer">
+              <span class="produit-price">55 €</span>
+              <div class="produit-stars"><span>★★★★★</span><span class="produit-reviews">(112)</span></div>
+            </div>
+            <button class="produit-add-btn">+ Réserver</button>
+          </div>
+        </div>
+
+        <!-- Balayage -->
+        <div class="produit-card reveal" data-delay="200" data-product='{"id":3,"name":"Balayage & Coupe","sub":"Coloration + coupe + brushing","price":120}' onclick="if(!event.target.closest('.produit-add-btn'))location.href='produit-huile.html';" style="cursor:pointer;">
+          <div class="produit-img">
+            <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" width="100%">
+              <rect width="260" height="300" fill="#111"/>
+              <!-- Silhouette chevelure mini -->
+              <path d="M130,30 C88,30 62,62 60,100 C58,138 68,165 80,195 C92,225 95,248 95,265 L165,265 C165,248 168,225 180,195 C192,165 202,138 200,100 C198,62 172,30 130,30Z" fill="#1A1A1A" stroke="#C9A96E" stroke-width="0.7" opacity="0.6"/>
+              <path d="M100,55 C97,88 95,138 97,195" fill="none" stroke="#C9A96E" stroke-width="1.8" opacity="0.6" stroke-linecap="round"/>
+              <path d="M115,44 C113,80 112,138 113,200" fill="none" stroke="#E8C97A" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+              <path d="M130,40 C130,76 130,138 130,205" fill="none" stroke="#C9A96E" stroke-width="2" opacity="0.55" stroke-linecap="round"/>
+              <path d="M145,44 C147,80 148,138 147,200" fill="none" stroke="#E8C97A" stroke-width="2.2" opacity="0.5" stroke-linecap="round"/>
+              <path d="M160,55 C162,88 163,140 161,196" fill="none" stroke="#C9A96E" stroke-width="1.6" opacity="0.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="produit-info">
+            <h3 class="produit-name">Balayage & Coupe</h3>
+            <p class="produit-sub">Coloration + coupe + brushing</p>
+            <div class="produit-footer">
+              <span class="produit-price">120 €</span>
+              <div class="produit-stars"><span>★★★★★</span><span class="produit-reviews">(67)</span></div>
+            </div>
+            <button class="produit-add-btn">+ Réserver</button>
+          </div>
+        </div>
+
+        <!-- Formation -->
+        <div class="produit-card reveal" data-delay="300" data-product='{"id":4,"name":"Formation Coiffure Pro","sub":"Cursus intensif · 5 jours","price":490}'>
+          <div class="produit-img">
+            <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" width="100%">
+              <rect width="260" height="300" fill="#111"/>
+              <!-- Diplôme stylisé -->
+              <rect x="50" y="70" width="160" height="120" rx="6" fill="#1A1A1A" stroke="#C9A96E" stroke-width="1" opacity="0.7"/>
+              <line x1="70" y1="105" x2="190" y2="105" stroke="#C9A96E" stroke-width="0.6" opacity="0.4"/>
+              <line x1="70" y1="120" x2="190" y2="120" stroke="#C9A96E" stroke-width="0.6" opacity="0.3"/>
+              <line x1="70" y1="135" x2="160" y2="135" stroke="#C9A96E" stroke-width="0.6" opacity="0.3"/>
+              <text x="130" y="95" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#C9A96E" letter-spacing="2" opacity="0.8">DIPLÔME</text>
+              <!-- Médaille -->
+              <circle cx="130" cy="230" r="28" fill="#1A1A1A" stroke="#C9A96E" stroke-width="1.2" opacity="0.7"/>
+              <circle cx="130" cy="230" r="20" fill="none" stroke="#C9A96E" stroke-width="0.6" opacity="0.4"/>
+              <text x="130" y="234" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" fill="#C9A96E" opacity="0.8">★</text>
+              <line x1="110" y1="202" x2="118" y2="192" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+              <line x1="150" y1="202" x2="142" y2="192" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+            </svg>
+            <span class="produit-badge" style="background:var(--or);color:var(--noir);">Formation</span>
+          </div>
+          <div class="produit-info">
+            <h3 class="produit-name">Formation Coiffure Pro</h3>
+            <p class="produit-sub">Cursus intensif · 5 jours</p>
+            <div class="produit-footer">
+              <span class="produit-price">490 €</span>
+              <div class="produit-stars"><span>★★★★★</span><span class="produit-reviews">(38)</span></div>
+            </div>
+            <button class="produit-add-btn">+ S'inscrire</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <section class="section stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal" data-delay="0"><span class="stat-num" data-target="8">0</span><span class="stat-suffix">+</span><span class="stat-label">années d'expertise</span></div>
+        <div class="stat-item reveal" data-delay="100"><span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span><span class="stat-label">clientes satisfaites</span></div>
+        <div class="stat-item reveal" data-delay="200"><span class="stat-num" data-target="3">0</span><span class="stat-suffix"></span><span class="stat-label">services beauté</span></div>
+        <div class="stat-item reveal" data-delay="300"><span class="stat-num" data-target="100">0</span><span class="stat-suffix">%</span><span class="stat-label">savoir-faire certifié</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER ========== -->
+  <section class="section newsletter">
+    <div class="container">
+      <div class="newsletter-inner reveal">
+        <span class="section-eyebrow">Rejoignez Ineskaburea</span>
+        <h2 class="newsletter-title">Recevez nos <em>actualités<br>& offres exclusives</em></h2>
+        <p class="newsletter-desc">Nouveautés, promotions et conseils beauté réservés aux membres de l'Institut Ineskaburea.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" class="newsletter-input" placeholder="Votre adresse e-mail" id="newsletterEmail" required>
+          <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </form>
+        <p class="newsletter-legal">En vous inscrivant, vous acceptez notre politique de confidentialité.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-logo">Ineskaburea</p>
+          <p class="footer-tagline">Institut Beauté & Formation Coiffure<br>112 Av. Paul Valéry, 83160 La Valette-du-Var</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social">Ig</a>
+            <a href="#" class="footer-social">Fb</a>
+            <a href="#" class="footer-social">Tt</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="produits.html">Extensions de cils</a></li>
+            <li><a href="produits.html">Pose d'ongles</a></li>
+            <li><a href="produits.html">Coiffure</a></li>
+            <li><a href="produits.html">Soins capillaires</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Formation</h4>
+          <ul class="footer-links">
+            <li><a href="produits.html">Formation coiffure</a></li>
+            <li><a href="produits.html">Cursus intensif</a></li>
+            <li><a href="produits.html">Perfectionnement</a></li>
+            <li><a href="aide.html">Nous contacter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Institut</h4>
+          <ul class="footer-links">
+            <li><a href="aide.html">Contact & Rendez-vous</a></li>
+            <li><a href="commande.html">Réserver en ligne</a></li>
+            <li><a href="aide.html#sav">Service Client</a></li>
+            <li><a href="#">Mentions légales</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Ineskaburea. Tous droits réservés. — 112 Av. Paul Valéry, 83160 La Valette-du-Var</p>
+        <div class="footer-legal">
+          <a href="#">Mentions légales</a>
+          <a href="#">Confidentialité</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== PANIER DRAWER ========== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title">Mes Réservations</h3>
+      <button class="cart-close" id="cartClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Aucune réservation en cours.</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">0 €</span>
+      </div>
+      <a href="commande.html" class="btn btn-primary btn-full" id="checkoutBtn">Confirmer la réservation →</a>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+  <script src="main.js"></script>
+</body>
+</html>

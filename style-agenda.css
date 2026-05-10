@@ -1,0 +1,526 @@
+/* ============================================================
+   INESKABUREA — style-agenda.css
+   Styles spécifiques à la page agenda (rendez-vous)
+   Dépend de : style-noir-or.css (variables & base)
+   ============================================================ */
+
+/* ── Page wrapper ── */
+.agenda-page {
+    min-height: 100vh;
+    padding-top: 80px;
+    background: var(--noir);
+}
+
+/* ── En-tête ── */
+.agenda-header {
+    padding: 4rem var(--pad-x) 2.5rem;
+    background: var(--noir-doux);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    position: relative;
+}
+.agenda-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: var(--pad-x);
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, var(--or), var(--or-clair));
+}
+.agenda-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* ── Fil d'ariane ── */
+.agenda-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.35);
+    margin-bottom: 1.2rem;
+}
+.agenda-breadcrumb a { color: var(--or); }
+.agenda-breadcrumb span { opacity: 0.5; }
+
+/* ── Titre ── */
+.agenda-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    color: var(--blanc);
+    line-height: 1.1;
+}
+.agenda-title em { font-style: italic; color: var(--or); }
+
+.agenda-subtitle {
+    font-size: 0.76rem;
+    font-weight: 300;
+    color: rgba(253,250,245,0.35);
+    margin-top: 0.6rem;
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+}
+
+/* ── Badge ── */
+.badge-new {
+    display: inline-block;
+    background: rgba(201,169,110,0.12);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--or);
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+}
+
+/* ── Stepper ── */
+.agenda-stepper {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 0.5rem;
+}
+.astep {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.2);
+    transition: color 0.3s;
+}
+.astep.active { color: var(--or); }
+.astep.done   { color: var(--or-fonce); }
+.astep-num {
+    width: 26px;
+    height: 26px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.58rem;
+    flex-shrink: 0;
+    transition: background 0.3s;
+}
+.astep.active .astep-num { background: rgba(201,169,110,0.1); }
+.astep.done   .astep-num { background: rgba(139,106,62,0.2); }
+.astep-bar {
+    width: 50px;
+    height: 1px;
+    background: rgba(201,169,110,0.12);
+    margin: 0 0.8rem;
+}
+
+/* ── Barre de progression ── */
+.agenda-progress {
+    height: 2px;
+    background: rgba(201,169,110,0.07);
+}
+.agenda-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--or-fonce), var(--or), var(--or-clair));
+    transition: width 0.5s var(--ease);
+    width: 10%;
+}
+
+/* ── Layout principal ── */
+.agenda-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem var(--pad-x) 6rem;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* ── Panneaux ── */
+.agenda-panel {
+    background: var(--noir-moyen);
+    border: 1px solid rgba(201,169,110,0.12);
+    margin-bottom: 1.5rem;
+}
+.agenda-panel-header {
+    padding: 1.4rem 2rem;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+.agenda-panel-num {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--or);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: var(--or);
+    flex-shrink: 0;
+}
+.agenda-panel-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--blanc);
+}
+.agenda-panel-body { padding: 1.8rem 2rem; }
+.agenda-panel-body--flush { padding: 0; min-height: 1000px; }
+
+/* ── Chips catégorie ── */
+.cat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.cat-chip {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.35);
+    border: 1px solid rgba(201,169,110,0.15);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.cat-chip:hover {
+    border-color: rgba(201,169,110,0.4);
+    color: var(--or-clair);
+}
+.cat-chip.active {
+    background: rgba(201,169,110,0.1);
+    border-color: var(--or);
+    color: var(--or);
+}
+
+/* ── Liste des prestations ── */
+.prestations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.prestation-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(201,169,110,0.08);
+    cursor: pointer;
+    gap: 1rem;
+    transition: border-color 0.25s, background 0.25s;
+}
+.prestation-item:hover {
+    border-color: rgba(201,169,110,0.3);
+    background: rgba(201,169,110,0.03);
+}
+.prestation-item.selected {
+    border-color: var(--or);
+    background: rgba(201,169,110,0.07);
+}
+.prestation-info { flex: 1; }
+.prestation-name {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--blanc);
+    margin-bottom: 0.2rem;
+}
+.prestation-meta {
+    font-size: 0.6rem;
+    font-weight: 300;
+    color: rgba(253,250,245,0.35);
+    letter-spacing: 0.06em;
+}
+.prestation-price {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--or);
+    white-space: nowrap;
+}
+.prestation-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,0.2);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s, border-color 0.25s;
+}
+.prestation-item.selected .prestation-dot {
+    background: var(--or);
+    border-color: var(--or);
+}
+.prestation-dot svg {
+    width: 9px;
+    height: 9px;
+    stroke: var(--noir);
+    fill: none;
+    stroke-width: 2.5;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.prestation-item.selected .prestation-dot svg { opacity: 1; }
+
+/* ── Calendly ── */
+.calendly-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 1000px;
+    gap: 1.5rem;
+    padding: 3rem;
+    text-align: center;
+}
+.calendly-placeholder-icon {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--or);
+}
+.calendly-placeholder-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.2;
+}
+.calendly-placeholder-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--blanc);
+}
+.calendly-placeholder-text {
+    font-size: 0.76rem;
+    font-weight: 300;
+    color: rgba(253,250,245,0.35);
+    line-height: 1.9;
+    max-width: 340px;
+}
+.calendly-inline-widget {
+    min-height: 900px !important;
+    height: 900px !important;
+    width: 100% !important;
+    border: none;
+}
+
+/* Forcer l'iframe interne de Calendly */
+.calendly-inline-widget iframe {
+    width: 100% !important;
+    height: 900px !important;
+    min-height: 900px !important;
+}
+
+/* ── Récapitulatif sidebar ── */
+.recap-sidebar {
+    position: sticky;
+    top: 100px;
+}
+.recap-card {
+    background: var(--noir-moyen);
+    border: 1px solid rgba(201,169,110,0.15);
+    border-top: 2px solid var(--or);
+}
+.recap-card-header {
+    padding: 1.3rem 1.8rem;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+}
+.recap-card-title {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--or-clair);
+    letter-spacing: 0.06em;
+}
+.recap-card-body { padding: 1.4rem 1.8rem; }
+.recap-row {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(201,169,110,0.07);
+}
+.recap-row:last-of-type { border-bottom: none; }
+.recap-label {
+    font-size: 0.55rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.35);
+    margin-bottom: 0.25rem;
+}
+.recap-val {
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    color: var(--blanc);
+}
+.recap-val.empty {
+    font-style: italic;
+    color: rgba(253,250,245,0.2);
+    font-size: 0.78rem;
+}
+.recap-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.8rem;
+    border-top: 1px solid rgba(201,169,110,0.18);
+}
+.recap-total-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.3);
+}
+.recap-total-amount {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--or);
+}
+.recap-note {
+    font-size: 0.58rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(253,250,245,0.2);
+    text-align: center;
+    padding: 0 1.8rem 1.5rem;
+}
+
+/* ── Infos pratiques ── */
+.infos-pratiques {
+    margin-top: 1.2rem;
+    background: var(--noir-leger);
+    border: 1px solid rgba(201,169,110,0.1);
+    padding: 1.4rem 1.6rem;
+}
+.infos-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.35);
+    margin-bottom: 1rem;
+}
+.infos-row {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    margin-bottom: 0.9rem;
+}
+.infos-row:last-child { margin-bottom: 0; }
+.infos-row svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--or);
+    fill: none;
+    stroke-width: 1.3;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.infos-row span {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: rgba(253,250,245,0.38);
+    line-height: 1.65;
+}
+
+/* ── Toast agenda ── */
+.toast-agenda {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(130%);
+    background: var(--noir-moyen);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-left: 2px solid var(--or);
+    color: var(--or-clair);
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 2rem;
+    z-index: 800;
+    transition: transform 0.4s var(--ease);
+    white-space: nowrap;
+}
+.toast-agenda.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .agenda-layout {
+        grid-template-columns: 1fr;
+    }
+    .recap-sidebar {
+        position: static;
+    }
+}
+@media (max-width: 560px) {
+    .astep-label { display: none; }
+    .agenda-panel-body { padding: 1.2rem; }
+    .agenda-panel-body--flush { padding: 0; }
+}
+
+/* ── Bloc popup Calendly ── */
+.calendly-popup-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+/* Bouton d'ouverture de la popup */
+.btn-calendly-popup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2.5rem;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: var(--or);
+    color: var(--noir);
+    border: 1px solid var(--or);
+    cursor: pointer;
+    transition: background 0.3s var(--ease), letter-spacing 0.3s, transform 0.2s;
+    margin-top: 0.5rem;
+}
+.btn-calendly-popup:hover {
+    background: var(--or-vif);
+    letter-spacing: 0.32em;
+}
+.btn-calendly-popup:active { transform: scale(0.98); }
+.btn-calendly-popup svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+}

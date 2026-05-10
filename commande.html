@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ineskaburea — Réserver une Prestation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link id="mainStylesheet" rel="stylesheet" href="style-noir-or.css">
+  <script></script>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="header scrolled" id="header">
+    <nav class="nav">
+      <a href="accueil.html" class="nav-logo">Ineskaburea</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="accueil.html#services" class="nav-link">Services</a></li>
+        <li><a href="produits.html" class="nav-link">Produits</a></li>
+        <li><a href="accueil.html#formation" class="nav-link">Formation</a></li>
+        <li><a href="produits.html" class="nav-link">Prestations</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" aria-label="Compte">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="nav-icon-btn" id="themeBtn" aria-label="Mode nuit" title="Basculer mode nuit">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-burger" id="navBurger"><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== EN-TÊTE ========== -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-breadcrumb">
+        <a href="accueil.html">Accueil</a>
+        <span>/</span>
+        <a href="produits.html">Produits</a>
+        <span>/</span>
+        <span>Commande</span>
+      </div>
+      <h1 class="page-title">Votre <em>commande</em></h1>
+    </div>
+  </div>
+
+  <!-- ========== ÉTAPES ========== -->
+  <div style="max-width:1100px;margin:0 auto;padding:2rem var(--pad-x) 0;">
+    <div class="commande-steps">
+      <div class="commande-step done">
+        <span class="step-num">✓</span>
+        <span>Panier</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="commande-step active">
+        <span class="step-num">2</span>
+        <span>Informations</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="commande-step">
+        <span class="step-num">3</span>
+        <span>Confirmation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CONTENU PRINCIPAL ========== -->
+  <div class="commande-page">
+
+    <!-- SECTION FORMULAIRE (visible par défaut) -->
+    <div id="formSection">
+      <div class="commande-layout">
+
+        <!-- COLONNE GAUCHE : Formulaire -->
+        <div class="commande-form-section">
+          <form id="commandeForm">
+
+            <!-- Informations personnelles -->
+            <div class="form-section">
+              <h2 class="commande-section-title">Informations <em>personnelles</em></h2>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="prenom">Prénom *</label>
+                  <input type="text" id="prenom" name="prenom" class="form-input" placeholder="Marie" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="nom">Nom *</label>
+                  <input type="text" id="nom" name="nom" class="form-input" placeholder="Dupont" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="email">Adresse e-mail *</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="marie@exemple.fr" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="telephone">Téléphone</label>
+                  <input type="tel" id="telephone" name="telephone" class="form-input" placeholder="+33 6 12 34 56 78">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="dateNaissance">Date de naissance</label>
+                <input type="date" id="dateNaissance" name="dateNaissance" class="form-input">
+                <p class="form-hint">Facultatif — pour recevoir une offre d'anniversaire personnalisée.</p>
+              </div>
+            </div>
+
+            <!-- Adresse de livraison -->
+            <div class="form-section">
+              <h2 class="commande-section-title">Adresse de <em>livraison</em></h2>
+              <div class="form-group">
+                <label class="form-label" for="adresse1">Adresse *</label>
+                <input type="text" id="adresse1" name="adresse1" class="form-input" placeholder="12 rue des Fleurs" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adresse2">Complément d'adresse</label>
+                <input type="text" id="adresse2" name="adresse2" class="form-input" placeholder="Appartement, bâtiment, étage…">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="codePostal">Code postal *</label>
+                  <input type="text" id="codePostal" name="codePostal" class="form-input" placeholder="75001" required maxlength="10">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ville">Ville *</label>
+                  <input type="text" id="ville" name="ville" class="form-input" placeholder="Paris" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="region">Région / Département</label>
+                  <input type="text" id="region" name="region" class="form-input" placeholder="Île-de-France">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pays">Pays *</label>
+                  <select id="pays" name="pays" class="form-select" required>
+                    <option value="">Sélectionner…</option>
+                    <option value="FR" selected>France</option>
+                    <option value="BE">Belgique</option>
+                    <option value="CH">Suisse</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="MC">Monaco</option>
+                    <option value="DE">Allemagne</option>
+                    <option value="ES">Espagne</option>
+                    <option value="IT">Italie</option>
+                    <option value="GB">Royaume-Uni</option>
+                    <option value="US">États-Unis</option>
+                    <option value="CA">Canada</option>
+                    <option value="OTHER">Autre</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Adresse de facturation -->
+              <div class="form-group" style="margin-top:1rem;">
+                <label class="filtre-option" style="font-size:0.78rem;font-weight:300;">
+                  <input type="checkbox" id="sameAddress" checked style="accent-color:var(--sauge-fonce);">
+                  Adresse de facturation identique à l'adresse de livraison
+                </label>
+              </div>
+
+              <div id="facturationFields" style="display:none;margin-top:1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="factAdresse">Adresse de facturation *</label>
+                  <input type="text" id="factAdresse" name="factAdresse" class="form-input" placeholder="Adresse de facturation">
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="factCP">Code postal *</label>
+                    <input type="text" id="factCP" name="factCP" class="form-input" placeholder="75001">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="factVille">Ville *</label>
+                    <input type="text" id="factVille" name="factVille" class="form-input" placeholder="Paris">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mode de livraison -->
+            <div class="form-section">
+              <h2 class="commande-section-title">Mode de <em>livraison</em></h2>
+              <div style="display:flex;flex-direction:column;gap:0.8rem;">
+                <label style="display:flex;align-items:center;justify-content:space-between;border:1px solid var(--lin);padding:1rem 1.2rem;cursor:pointer;transition:border-color 0.25s;" id="livraisonStandard">
+                  <div style="display:flex;align-items:center;gap:0.8rem;">
+                    <input type="radio" name="livraison" value="standard" checked style="accent-color:var(--sauge-fonce);">
+                    <div>
+                      <p style="font-size:0.82rem;color:var(--encre);">Livraison standard</p>
+                      <p style="font-size:0.68rem;color:var(--encre-leger);margin-top:0.2rem;">3–5 jours ouvrés</p>
+                    </div>
+                  </div>
+                  <span style="font-family:var(--serif);font-size:0.9rem;color:var(--terre);" id="livraisonStandardPrix">5,90 €</span>
+                </label>
+                <label style="display:flex;align-items:center;justify-content:space-between;border:1px solid var(--lin);padding:1rem 1.2rem;cursor:pointer;transition:border-color 0.25s;">
+                  <div style="display:flex;align-items:center;gap:0.8rem;">
+                    <input type="radio" name="livraison" value="express" style="accent-color:var(--sauge-fonce);">
+                    <div>
+                      <p style="font-size:0.82rem;color:var(--encre);">Livraison express</p>
+                      <p style="font-size:0.68rem;color:var(--encre-leger);margin-top:0.2rem;">1–2 jours ouvrés</p>
+                    </div>
+                  </div>
+                  <span style="font-family:var(--serif);font-size:0.9rem;color:var(--terre);">12,90 €</span>
+                </label>
+                <label style="display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(143,174,154,0.4);background:rgba(143,174,154,0.04);padding:1rem 1.2rem;cursor:pointer;">
+                  <div style="display:flex;align-items:center;gap:0.8rem;">
+                    <input type="radio" name="livraison" value="retrait" style="accent-color:var(--sauge-fonce);">
+                    <div>
+                      <p style="font-size:0.82rem;color:var(--encre);">Retrait en boutique</p>
+                      <p style="font-size:0.68rem;color:var(--encre-leger);margin-top:0.2rem;">12 rue du Faubourg Saint-Honoré, Paris 8e</p>
+                    </div>
+                  </div>
+                  <span style="font-family:var(--serif);font-size:0.9rem;color:var(--sauge-fonce);">Gratuit</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Mode de paiement -->
+            <div class="form-section">
+              <h2 class="commande-section-title">Mode de <em>paiement</em></h2>
+              <div class="paiement-options">
+                <div class="paiement-option selected" data-method="card">
+                  <input type="radio" name="paiement" value="card" checked>
+                  <div>
+                    <p class="paiement-option-label">Carte bancaire</p>
+                    <p style="font-size:0.62rem;color:var(--encre-leger);margin-top:0.2rem;">Visa · Mastercard · Amex</p>
+                  </div>
+                </div>
+                <div class="paiement-option" data-method="paypal">
+                  <input type="radio" name="paiement" value="paypal">
+                  <div>
+                    <p class="paiement-option-label">PayPal</p>
+                    <p style="font-size:0.62rem;color:var(--encre-leger);margin-top:0.2rem;">Paiement sécurisé</p>
+                  </div>
+                </div>
+                <div class="paiement-option" data-method="virement">
+                  <input type="radio" name="paiement" value="virement">
+                  <div>
+                    <p class="paiement-option-label">Virement bancaire</p>
+                    <p style="font-size:0.62rem;color:var(--encre-leger);margin-top:0.2rem;">Délai 2–3 jours</p>
+                  </div>
+                </div>
+                <div class="paiement-option" data-method="cheque">
+                  <input type="radio" name="paiement" value="cheque">
+                  <div>
+                    <p class="paiement-option-label">Chèque</p>
+                    <p style="font-size:0.62rem;color:var(--encre-leger);margin-top:0.2rem;">À l'ordre de LUMIÈRE Paris</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Champs carte -->
+              <div class="card-fields visible" id="cardFields">
+                <div class="form-group">
+                  <label class="form-label" for="cardNumber">Numéro de carte *</label>
+                  <input type="text" id="cardNumber" name="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="cardExpiry">Date d'expiration *</label>
+                    <input type="text" id="cardExpiry" name="cardExpiry" class="form-input" placeholder="MM / AA" maxlength="7" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="cardCVV">CVV *</label>
+                    <input type="text" id="cardCVV" name="cardCVV" class="form-input" placeholder="123" maxlength="4" required>
+                    <p class="form-hint">3 ou 4 chiffres au dos de votre carte.</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cardName">Nom sur la carte *</label>
+                  <input type="text" id="cardName" name="cardName" class="form-input" placeholder="MARIE DUPONT" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Note complémentaire -->
+            <div class="form-section">
+              <h2 class="commande-section-title">Note <em>complémentaire</em></h2>
+              <div class="form-group">
+                <label class="form-label" for="note">Instructions spéciales (optionnel)</label>
+                <textarea id="note" name="note" class="form-textarea" placeholder="Instructions de livraison, message cadeau, demande particulière…"></textarea>
+              </div>
+            </div>
+
+            <!-- CGV -->
+            <div class="form-group" style="margin-bottom:2rem;">
+              <label class="filtre-option" style="font-size:0.78rem;font-weight:300;align-items:flex-start;gap:0.8rem;">
+                <input type="checkbox" id="cgv" required style="accent-color:var(--sauge-fonce);margin-top:3px;flex-shrink:0;">
+                J'accepte les <a href="#" style="color:var(--sauge-fonce);border-bottom:1px solid rgba(78,117,96,0.3);">conditions générales de vente</a> et la <a href="#" style="color:var(--sauge-fonce);border-bottom:1px solid rgba(78,117,96,0.3);">politique de confidentialité</a> de LUMIÈRE Paris. *
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-submit" style="font-size:0.75rem;padding:1.2rem;">
+              Confirmer et payer →
+            </button>
+            <p style="font-size:0.62rem;color:var(--encre-leger);text-align:center;margin-top:1rem;opacity:0.6;">
+              Paiement 100 % sécurisé · SSL · Données chiffrées
+            </p>
+
+          </form>
+        </div>
+
+        <!-- COLONNE DROITE : Récapitulatif -->
+        <aside class="commande-recap">
+          <div class="recap-box">
+            <p class="recap-title">Récapitulatif</p>
+            <div class="recap-items" id="recapItems">
+              <p class="recap-empty">Chargement…</p>
+            </div>
+            <div class="recap-lines">
+              <div class="recap-line">
+                <span>Sous-total</span>
+                <span id="recapSousTotal">—</span>
+              </div>
+              <div class="recap-line">
+                <span>Livraison</span>
+                <span id="recapLivraison">—</span>
+              </div>
+              <div class="recap-line">
+                <span>Code promo</span>
+                <span style="color:var(--sauge-fonce);">—</span>
+              </div>
+            </div>
+            <div class="recap-total">
+              <span>Total TTC</span>
+              <span id="recapTotal">—</span>
+            </div>
+
+            <!-- Code promo -->
+            <div style="display:flex;gap:0;border:1px solid var(--lin);margin-bottom:1.5rem;">
+              <input type="text" placeholder="Code promo" style="flex:1;padding:0.7rem 1rem;border:none;outline:none;font-family:var(--sans);font-size:0.78rem;background:transparent;color:var(--encre);">
+              <button style="padding:0.7rem 1rem;font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blanc);background:var(--encre);border:none;cursor:pointer;transition:background 0.25s;" onmouseover="this.style.background='var(--encre-doux)'" onmouseout="this.style.background='var(--encre)'">Appliquer</button>
+            </div>
+
+            <div class="recap-secure">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Paiement sécurisé SSL — vos données sont protégées</span>
+            </div>
+
+            <!-- Retour panier -->
+            <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--lin);text-align:center;">
+              <a href="produits.html" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--encre-leger);border-bottom:1px solid var(--lin);padding-bottom:1px;">← Continuer mes achats</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- SECTION CONFIRMATION (cachée par défaut) -->
+    <div id="confirmSection" style="display:none; padding: var(--pad-y) 0;">
+      <div class="confirmation-box">
+        <div class="confirmation-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2 class="confirmation-title">Merci pour votre <em>commande</em></h2>
+        <p class="confirmation-text">
+          Votre commande a bien été enregistrée. Vous recevrez un e-mail de confirmation dans les prochaines minutes. Nos équipes préparent votre colis avec soin, dans notre atelier parisien.
+        </p>
+        <p class="confirmation-ref">Numéro de commande : <span id="orderRef">#LUM-2025-0001</span></p>
+        <div style="margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="accueil.html" class="btn btn-primary">Retour à l'accueil</a>
+          <a href="produits.html" class="btn btn-ghost">Continuer mes achats</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-logo">Ineskaburea</p>
+          <p class="footer-tagline">Institut Beauté & Formation Coiffure — La Valette-du-Var</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social">Ig</a>
+            <a href="#" class="footer-social">Fb</a>
+            <a href="#" class="footer-social">Pt</a>
+            <a href="#" class="footer-social">Yt</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Collections</h4>
+          <ul class="footer-links">
+            <li><a href="produits.html">Soins visage</a></li>
+            <li><a href="produits.html">Corps & bain</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mon compte</a></li>
+            <li><a href="#">Retours</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Aide</h4>
+          <ul class="footer-links">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Livraison</a></li>
+            <li><a href="#">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Ineskaburea. Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="#">Mentions légales</a>
+          <a href="#">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Formatage numéro de carte
+    const cardNumberInput = document.getElementById('cardNumber');
+    if (cardNumberInput) {
+      cardNumberInput.addEventListener('input', function() {
+        let val = this.value.replace(/\D/g, '').substring(0, 16);
+        this.value = val.replace(/(.{4})/g, '$1 ').trim();
+      });
+    }
+
+    // Formatage expiration
+    const cardExpiryInput = document.getElementById('cardExpiry');
+    if (cardExpiryInput) {
+      cardExpiryInput.addEventListener('input', function() {
+        let val = this.value.replace(/\D/g, '').substring(0, 4);
+        if (val.length >= 2) val = val.substring(0, 2) + ' / ' + val.substring(2);
+        this.value = val;
+      });
+    }
+
+    // Toggle adresse facturation
+    const sameAddress = document.getElementById('sameAddress');
+    const factFields  = document.getElementById('facturationFields');
+    if (sameAddress && factFields) {
+      sameAddress.addEventListener('change', () => {
+        factFields.style.display = sameAddress.checked ? 'none' : 'block';
+      });
+    }
+
+    // Générer une référence commande aléatoire
+    const orderRef = document.getElementById('orderRef');
+    if (orderRef) {
+      orderRef.textContent = '#LUM-2025-' + Math.floor(1000 + Math.random() * 9000);
+    }
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>
